@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Free Spaces</title>
+</head>
+<body>
+    <h1>Get Free Spaces</h1>
+    <button onclick="getFreeSpaces()">Get Free Spaces</button>
+
+    <script>
+        async function getFreeSpaces() {
+            try {
+                // Extract the username from the query parameter in the URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const username = urlParams.get('username');
+
+                if (!username) {
+                    console.error('Username not found in URL query parameter.');
+                    return;
+                }
+
+                const response = await fetch('http://localhost:3000/calculate-free-time', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    console.log('Free spaces calculated successfully.');
+                    window.location.href = `groups.html?username=${encodeURIComponent(username)}`;
+                } else {
+                    console.error('Error:', data.error);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>

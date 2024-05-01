@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Login</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+
+  h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+  }
+
+  #loginFormContainer {
+    max-width: 400px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+  #eventsNotice {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+    display: none; /* Hide the notice by default */
+  }
+
+  #getEventsBtn {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  #getEventsBtn:hover {
+    background-color: #218838;
+  }
+
+  #eventsList {
+    max-width: 400px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none; /* Hide the events list by default */
+  }
+</style>
+</head>
+<body>
+
+<h1>Login</h1>
+<p id="eventsNotice">Please click to get events before logging in</p>
+
+<div id="loginFormContainer">
+  <form id="loginForm">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username" required><br>
+    
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" required><br>
+
+    <input type="submit" value="Login">
+  </form>
+</div>
+
+
+
+<!-- Hidden input field to store events data -->
+<input type="hidden" id="eventsData" name="eventsData">
+<button id="getEventsBtn">Get Events</button>
+
+<div id="eventsList"></div>
+
+<script src="login.js"></script>
+
+</body>
+</html>
